@@ -12,25 +12,8 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    // Use Maven to build the Spring Boot application
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
-        }
-
-        stage('test') {
-            steps {
-                script {
-                    echo 'testing'
-                }
-            }
-        }
-
-        stage('build image') {
-            steps {
-                script {
-                    // Use a Maven image as the build stage
-                    def builderImage = 'maven:3.8.4-openjdk-11'
+                    // Use a Docker image with Java 17 for building the Spring Boot application
+                    def builderImage = 'adoptopenjdk:17-jdk-hotspot'
                     def imageName = "${rurl}/${imagename}:latest"
 
                     // Build the Spring Boot application and create a thin JAR file
@@ -49,6 +32,14 @@ pipeline {
                         // Push the Docker image to Docker Hub
                         sh "docker push ${imageName}"
                     }
+                }
+            }
+        }
+
+        stage('test') {
+            steps {
+                script {
+                    echo 'testing'
                 }
             }
         }
