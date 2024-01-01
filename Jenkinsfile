@@ -9,17 +9,15 @@ pipeline {
     }
 
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 script {
-                    // Use a Docker image with Java 17 for building the Spring Boot application
-                    def builderImage = 'adoptopenjdk:17-jdk-hotspot'
+                    // Use an official Maven image for building the Spring Boot application
+                    def builderImage = 'maven:3.8.4-openjdk-17-slim'
                     def imageName = "${rurl}/${imagename}:latest"
 
                     // Build the Spring Boot application and create a thin JAR file
-                    docker.image(builderImage).inside('-v $HOME/.m2:/root/.m2') {
-                        sh 'mvn clean package -DskipTests'
-                    }
+                    sh 'mvn clean package -DskipTests'
 
                     // Use a smaller base image for the runtime
                     docker.build(imageName, '--file Dockerfile-runtime .')
@@ -36,10 +34,11 @@ pipeline {
             }
         }
 
-        stage('test') {
+        stage('Test') {
             steps {
                 script {
-                    echo 'testing'
+                    // Add your actual test commands here
+                    sh 'echo "Running tests"'
                 }
             }
         }
