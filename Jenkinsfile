@@ -20,7 +20,7 @@ pipeline {
                     sh 'mvn clean package -DskipTests'
 
                     // Use a smaller base image for the runtime
-                    docker.build(imageName, '--file Dockerfile-runtime .')
+                    docker.build(imageName, '--file Dockerfile .')
 
                     // Use Docker Hub credentials to log in
                     withCredentials([usernamePassword(credentialsId: dockerhubCredentials, passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
