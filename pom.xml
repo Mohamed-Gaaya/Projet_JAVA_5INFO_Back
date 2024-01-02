@@ -103,14 +103,15 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version> <!-- Use an available version -->
+            <version>3.10.0</version> <!-- Use a version that supports Java 17 -->
             <configuration>
-                <!-- Compiler configuration, if needed -->
+                <release>17</release> <!-- Set the Java version you are using -->
             </configuration>
         </plugin>
         <!-- Other plugins -->
     </plugins>
 </build>
+
 <repositories>
     <repository>
         <id>sonatype-oss</id>
