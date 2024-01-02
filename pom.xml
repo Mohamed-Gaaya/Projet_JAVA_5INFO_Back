@@ -14,7 +14,7 @@
     <name>sovivaResort-hotel</name>
     <description>sovivaResort-hotel</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
     
 
@@ -105,7 +105,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.10.0</version> <!-- Use a version that supports Java 17 -->
             <configuration>
-                <release>11</release> <!-- Set the Java version you are using -->
+                <release>17</release> <!-- Set the Java version you are using -->
             </configuration>
         </plugin>
         <!-- Other plugins -->
