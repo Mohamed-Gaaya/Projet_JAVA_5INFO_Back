@@ -111,6 +111,12 @@
         <!-- Other plugins -->
     </plugins>
 </build>
+<repositories>
+    <repository>
+        <id>sonatype-oss</id>
+        <url>https://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+</repositories>
 
 
 
