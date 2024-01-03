@@ -152,5 +152,12 @@
             <id>sonatype-oss</id>
             <url>https://oss.sonatype.org/content/repositories/releases/</url>
         </repository>
+         <repositories>
+    <repository>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+</repositories>
+
     </repositories>
 </project>
