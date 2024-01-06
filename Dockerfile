@@ -9,8 +9,7 @@ COPY pom.xml .
 COPY src src
 
 # Download the dependencies and build the project
-RUN mvn dependency:go-offline -B
-RUN mvn package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Use a smaller base image for the runtime
 FROM adoptopenjdk:11-jre-hotspot
@@ -19,10 +18,10 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the JAR file from the builder stage
-COPY --from=builder /app/out/artifacts/sovivaResort_hotel_jar/sovivaResort-hotel.jar .
+COPY --from=builder /app/out/artifacts/sovivaResort_hotel_jar/sovivaResort-hotel.jar app.jar
 
 # Expose the port that the Spring Boot app will run on
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "sovivaResort-hotel.jar"]
+CMD ["java", "-jar", "app.jar"]
