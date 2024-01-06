@@ -14,7 +14,7 @@ RUN mvn dependency:go-offline -B
 RUN mvn package -DskipTests
 
 # Use a smaller base image for the runtime
-FROM adoptopenjdk:17-jre-hotspot
+FROM adoptopenjdk:11-jre-hotspot
 
 # Set the working directory
 WORKDIR /app
