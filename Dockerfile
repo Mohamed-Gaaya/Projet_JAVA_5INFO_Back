@@ -1,7 +1,6 @@
 # Use a Maven image as the build stage
 FROM maven:3.8.4-openjdk-17 AS builder
 
-
 # Set the working directory
 WORKDIR /app
 
@@ -26,4 +25,4 @@ COPY --from=builder /app/out/artifacts/sovivaResort_hotel_jar/sovivaResort-hotel
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "sovivarResort-hotel.jar"]
+CMD ["java", "-jar", "sovivaResort-hotel.jar"]
