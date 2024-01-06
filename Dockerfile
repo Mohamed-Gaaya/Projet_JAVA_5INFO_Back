@@ -1,5 +1,6 @@
 # Use a Maven image as the build stage
-FROM maven:3.8.4-openjdk-11 AS builder
+FROM maven:3.8.4-openjdk-17 AS builder
+
 
 # Set the working directory
 WORKDIR /app
