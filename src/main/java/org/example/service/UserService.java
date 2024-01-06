@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -49,8 +50,24 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void deleteUserid(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
     public User getUser(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
+
+    @Override
+
+        public User get(Long id) throws UsernameNotFoundException {
+            Optional<User> result = userRepository.findById(id);
+            if (result.isPresent()) {
+                return result.get();
+            }
+            throw new UsernameNotFoundException("Could not find any users with ID " + id);
+        }
+
 }
