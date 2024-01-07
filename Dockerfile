@@ -5,8 +5,7 @@ FROM maven:3.8.4-openjdk-17 AS builder
 WORKDIR /app
 
 # Copy the Maven project files
-COPY pom.xml .
-COPY src src
+COPY . .
 
 # Download the dependencies and build the project
 RUN mvn clean package -DskipTests
