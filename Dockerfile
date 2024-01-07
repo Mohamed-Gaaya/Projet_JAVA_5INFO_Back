@@ -18,7 +18,7 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the JAR file from the builder stage
-COPY --from=builder /app/*.jar /app/app.jar
+COPY --from=build /app/*.jar /app/app.jar
 
 # Expose the port that the Spring Boot app will run on
 EXPOSE 8080
