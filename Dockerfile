@@ -5,8 +5,7 @@ FROM maven:3.8.4-openjdk-17 AS builder
 WORKDIR /app
 
 # Copy the Maven project files
-COPY pom.xml .
-COPY src src
+COPY . .
 
 # Download the dependencies and build the project
 RUN mvn clean package -DskipTests
@@ -18,10 +17,10 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the JAR file from the builder stage
-COPY --from=builder /app/out/artifacts/sovivaResort_hotel_jar/sovivaResort-hotel.jar .
+COPY --from=builder /app/*.jar /app/app.jar
 
 # Expose the port that the Spring Boot app will run on
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "sovivaResort-hotel.jar"]
+CMD ["java", "-jar", "app.jar"]
